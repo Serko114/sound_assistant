@@ -58,11 +58,12 @@ print(1+1)
 # tts.start("добрый день сэр!")
 # del tts
 
+# # ---------------------------------------------------------------------
+# engine = pyttsx3.init()
 
-engine = pyttsx3.init()
-
-for voice in engine.getProperty('voices'):
-    print(voice)
+# for voice in engine.getProperty('voices'):
+#     print(voice)
+# # ---------------------------------------------------------------------
 
 # engine = pyttsx3.init()
 # ru_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU-RU_IRINA_11.0"
@@ -70,3 +71,10 @@ for voice in engine.getProperty('voices'):
 # engine.say('привет')
 
 # engine.runAndWait()
+
+engine = pyttsx3.init()
+ru_voice_id = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU-RU_IRINA_11.0'
+engine.setProperty('voice', ru_voice_id)
+engine.setProperty('rate', 150)
+engine.say("Уж нет пути вокруг зияет бездна, ты сам того хотел небезвоздмездно смелее странник здесь или нигде погибнешь ты подумав о беде")
+engine.runAndWait()

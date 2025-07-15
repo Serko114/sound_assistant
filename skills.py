@@ -62,20 +62,33 @@ def passive():
 
 
 # -----------------------блок озвучки (дублируем данные в файле voices.py)-----------------------------------
-engine = pyttsx3.init()
-ru_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU-RU_IRINA_11.0"
-engine.setProperty('voice', ru_voice_id)  # скорость речи
+# engine = pyttsx3.init()
+# ru_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU-RU_IRINA_11.0"
+# engine.setProperty('voice', ru_voice_id)  # скорость речи
 
-# engine = pyttsx3.init('dummy')
-# voice = engine.getProperty('voices')
-engine.setProperty('rate', 180)  # скорость речи
-# # зададим свойства
+# # engine = pyttsx3.init('dummy')
+# # voice = engine.getProperty('voices')
+# engine.setProperty('rate', 160)  # скорость речи
+# # # зададим свойства
 # engine.setProperty('rate', 150)     # скорость речи
+
+
 # engine.setProperty('volume', 0.9)   # громкость (0-1)
 
 
 def speaker(text):
+    engine = pyttsx3.init()
+    ru_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU-RU_IRINA_11.0"
+    engine.setProperty('voice', ru_voice_id)  # скорость речи
+
+    # engine = pyttsx3.init('dummy')
+    # voice = engine.getProperty('voices')
+    engine.setProperty('rate', 160)  # скорость речи
+    # # зададим свойства
+    # engine.setProperty('rate', 150)     # скорость речи
+
     '''Озвучка текста'''
-    print(f'тееееееееееееееееееееееекст: {text}')
+    print(
+        f'------------------------------{text}-------------------------------------')
     engine.say(text)
     engine.runAndWait()

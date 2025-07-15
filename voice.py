@@ -12,11 +12,13 @@ import pyttsx3  # pip install pyttsx3
 # На Linux-ax, скорее всего нужно еще:
 # sudo apt update && sudo apt install espeak ffmpeg libespeak1
 
-engine = pyttsx3.init()
+engine = pyttsx3.init('dummy')
 engine.setProperty('rate', 180)  # скорость речи
 
 
 def speaker(text):
     '''Озвучка текста'''
+    print(
+        f'------------------------------{text}-------------------------------------')
     engine.say(text)
     engine.runAndWait()

@@ -42,15 +42,15 @@ def recognize(data, vectorizer, clf):
     '''
     Анализ распознанной речи
     '''
-    # data придет в форме словаря {'text' ".......какие-то слова_через_пробел_текст.............."}
+    # data придет в форме словаря {'text': ".......какие-то слова_через_пробел_текст.............."}
     # проверяем есть ли имя бота в data, если нет, то return
     # .intersection( проверяет пересечение 2-х списков (круги Эйлера)
     trg = words.TRIGGERS.intersection(data.split())
-    # если trg, то возвращается пустой кортеж set(), а если присутствует, то со значением: {'кристи'}
+    # если trg, то возвращается пустой картеж set(), а если присутствует, то со значением: {'кристи'}
     if not trg:
-        print('not trg')
+        print('нет команды')
         return
-
+    # print(data)
     # удаляем имя бота из текста
     data.replace(list(trg)[0], '')
 
@@ -58,7 +58,7 @@ def recognize(data, vectorizer, clf):
     # сравниваем с вариантами, получая наиболее подходящий ответ
     text_vector = vectorizer.transform([data]).toarray()[0]
     answer = clf.predict([text_vector])[0]
-    print(answer)
+    # print(answer)
     # получение имени функции из ответа из data_set
     func_name = answer.split()[0]
 
@@ -67,6 +67,7 @@ def recognize(data, vectorizer, clf):
 
     # запуск функции из skills
     exec(func_name + '()')
+    # speaker(answer)
 
 
 def main():
